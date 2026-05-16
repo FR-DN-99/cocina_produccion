@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: 'IBM Plex Sans', system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    body {
+        background: #eef0f2;
+        color: #1e2530;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex items-center justify-center px-5 py-2.5 border border-line-strong bg-white text-ink font-medium text-sm rounded-sm transition-colors cursor-pointer;
+    }
+    .btn:hover {
+        @apply bg-bg-soft border-ink-soft;
+    }
+    .btn-primary {
+        @apply bg-accent border-accent text-white;
+    }
+    .btn-primary:hover {
+        @apply bg-[#174d8a] border-[#174d8a];
+    }
+    .btn-primary:disabled {
+        @apply bg-ink-mute border-ink-mute cursor-not-allowed;
+    }
+    .tag {
+        @apply inline-flex items-center px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-sm font-semibold border;
+    }
+    .tag-normal {
+        @apply bg-bg-soft text-ink-soft border-line-strong;
+    }
+    .tag-alerta {
+        @apply bg-danger-soft text-danger border-[#e8b6b1];
+    }
+    .tag-warn {
+        @apply bg-warn-soft text-warn border-[#e8c896];
+    }
+    .tag-evento {
+        @apply bg-accent-soft text-accent border-[#b8cfe5];
+    }
+}

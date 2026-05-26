@@ -1,0 +1,46 @@
+{
+  "equipos": [
+    {
+      "id": "horno",
+      "tipo": "horno",
+      "nombre": "Horno mixto grande",
+      "capacidad_raciones": 60,
+      "descripcion": "Horno convección-vapor de 10 niveles GN 1/1"
+    },
+    {
+      "id": "abatidor",
+      "tipo": "abatidor",
+      "nombre": "Abatidor de temperatura",
+      "capacidad_raciones": 80,
+      "descripcion": "Abatidor de 10 niveles"
+    },
+    {
+      "id": "fogon",
+      "tipo": "fogon",
+      "nombre": "Bloque de fogones",
+      "capacidad_raciones": 999,
+      "descripcion": "Sin limitación operativa relevante"
+    },
+    {
+      "id": "plancha",
+      "tipo": "plancha",
+      "nombre": "Plancha grande",
+      "capacidad_raciones": 40,
+      "descripcion": "Plancha de cromo duro"
+    },
+    {
+      "id": "encimera",
+      "tipo": "encimera",
+      "nombre": "Mesa de trabajo",
+      "capacidad_raciones": 999,
+      "descripcion": "Sin limitación operativa"
+    },
+    {
+      "id": "tritura",
+      "tipo": "tritura",
+      "nombre": "Túrmix industrial",
+      "capacidad_raciones": 999,
+      "descripcion": "Sin limitación operativa"
+    }
+  ]
+}

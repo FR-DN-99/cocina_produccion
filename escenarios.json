@@ -1,0 +1,84 @@
+{
+  "escenarios": [
+    {
+      "id": "ESC-001",
+      "titulo": "Día normal de hotel",
+      "descripcion": "Servicio estándar de mediodía sin incidencias",
+      "tipo": "estandar",
+      "hora_servicio": "14:00",
+      "tipo_servicio": "comida",
+      "ocupacion": {
+        "total_comensales": 87,
+        "pension_completa": 60,
+        "media_pension": 27,
+        "grupos_alergenos": []
+      }
+    },
+    {
+      "id": "ESC-002",
+      "titulo": "Cena con celíacos",
+      "descripcion": "Grupo pequeño de huéspedes celíacos declarados",
+      "tipo": "alerta",
+      "hora_servicio": "20:30",
+      "tipo_servicio": "cena",
+      "ocupacion": {
+        "total_comensales": 92,
+        "pension_completa": 62,
+        "media_pension": 30,
+        "grupos_alergenos": [
+          { "alergeno": "gluten", "personas": 4 }
+        ]
+      }
+    },
+    {
+      "id": "ESC-003",
+      "titulo": "Servicio con múltiples alérgenos",
+      "descripcion": "Varios grupos con distintas intolerancias y combinaciones",
+      "tipo": "alerta",
+      "hora_servicio": "14:00",
+      "tipo_servicio": "comida",
+      "ocupacion": {
+        "total_comensales": 110,
+        "pension_completa": 75,
+        "media_pension": 35,
+        "grupos_alergenos": [
+          { "alergeno": "gluten", "personas": 3 },
+          { "alergeno": "lactosa", "personas": 5 },
+          { "alergeno": "gluten+lactosa", "personas": 2 }
+        ]
+      }
+    },
+    {
+      "id": "ESC-004",
+      "titulo": "Boda García - 200 invitados",
+      "descripcion": "Banquete que supera capacidad del horno, requiere tandas",
+      "tipo": "evento",
+      "hora_servicio": "14:30",
+      "tipo_servicio": "banquete",
+      "ocupacion": {
+        "total_comensales": 200,
+        "pension_completa": 0,
+        "media_pension": 0,
+        "grupos_alergenos": [
+          { "alergeno": "gluten", "personas": 6 }
+        ]
+      }
+    },
+    {
+      "id": "ESC-005",
+      "titulo": "Comida de fin de semana",
+      "descripcion": "Menú múltiple con preparaciones compartidas",
+      "tipo": "menu_doble",
+      "hora_servicio": "14:00",
+      "tipo_servicio": "comida",
+      "ocupacion": {
+        "total_comensales": 75,
+        "pension_completa": 50,
+        "media_pension": 25,
+        "grupos_alergenos": [
+          { "alergeno": "lactosa", "personas": 3 }
+        ]
+      }
+    }
+  ]
+}

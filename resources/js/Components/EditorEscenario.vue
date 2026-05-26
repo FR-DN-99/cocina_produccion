@@ -30,7 +30,6 @@ watch(() => props.escenario, (esc) => {
     pensionCompleta.value = esc.ocupacion.pension_completa || 0;
     mediaPension.value = esc.ocupacion.media_pension || 0;
     horaServicio.value = esc.hora_servicio;
-    // Copia profunda para no mutar el original
     gruposAlergenos.value = JSON.parse(JSON.stringify(esc.ocupacion.grupos_alergenos || []));
 }, { immediate: true });
 
@@ -90,17 +89,16 @@ const totalAlergicos = () => gruposAlergenos.value.reduce((acc, g) => acc + Numb
     >
         <template #header>
             <h3 class="text-[15px] font-semibold">Modificar escenario</h3>
-            <p v-if="escenario" class="text-xs text-[#9aa3b0] mt-0.5">
+            <p v-if="escenario" class="text-xs text-[#9aa3b0] mt-0.5 truncate">
                 {{ escenario.id }} · {{ escenario.titulo }}
             </p>
         </template>
 
-        <div v-if="escenario" class="p-6 space-y-6">
+        <div v-if="escenario" class="p-4 md:p-6 space-y-5 md:space-y-6">
             <div class="bg-warn-soft border-l-[3px] border-warn p-3 text-xs text-[#8a4708] rounded-r-sm">
                 <strong>Atención:</strong> los cambios son temporales y solo se mantienen durante esta sesión. Al cerrar el navegador, el escenario vuelve a sus valores originales.
             </div>
 
-            <!-- Hora del servicio -->
             <div>
                 <label class="text-[10px] uppercase tracking-wider text-ink-mute font-semibold block mb-2">Hora del servicio</label>
                 <input
@@ -110,14 +108,14 @@ const totalAlergicos = () => gruposAlergenos.value.reduce((acc, g) => acc + Numb
                 />
             </div>
 
-            <!-- Comensales -->
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                 <div>
                     <label class="text-[10px] uppercase tracking-wider text-ink-mute font-semibold block mb-2">Total comensales</label>
                     <input
                         v-model.number="totalComensales"
                         type="number"
                         min="1"
+                        inputmode="numeric"
                         class="w-full border border-line px-3 py-2 rounded-sm font-mono text-sm focus:outline-none focus:border-accent"
                     />
                 </div>
@@ -127,6 +125,7 @@ const totalAlergicos = () => gruposAlergenos.value.reduce((acc, g) => acc + Numb
                         v-model.number="pensionCompleta"
                         type="number"
                         min="0"
+                        inputmode="numeric"
                         class="w-full border border-line px-3 py-2 rounded-sm font-mono text-sm focus:outline-none focus:border-accent"
                     />
                 </div>
@@ -136,12 +135,12 @@ const totalAlergicos = () => gruposAlergenos.value.reduce((acc, g) => acc + Numb
                         v-model.number="mediaPension"
                         type="number"
                         min="0"
+                        inputmode="numeric"
                         class="w-full border border-line px-3 py-2 rounded-sm font-mono text-sm focus:outline-none focus:border-accent"
                     />
                 </div>
             </div>
 
-            <!-- Alérgenos -->
             <div>
                 <div class="flex justify-between items-center mb-2">
                     <label class="text-[10px] uppercase tracking-wider text-ink-mute font-semibold">Grupos de alérgenos</label>
@@ -165,7 +164,7 @@ const totalAlergicos = () => gruposAlergenos.value.reduce((acc, g) => acc + Numb
                 >
                     <select
                         v-model="grupo.alergeno"
-                        class="border border-line px-3 py-2 rounded-sm text-sm focus:outline-none focus:border-accent"
+                        class="border border-line px-3 py-2 rounded-sm text-sm focus:outline-none focus:border-accent min-w-0"
                     >
                         <option
                             v-for="opt in alergenosDisponibles"
@@ -177,12 +176,13 @@ const totalAlergicos = () => gruposAlergenos.value.reduce((acc, g) => acc + Numb
                         v-model.number="grupo.personas"
                         type="number"
                         min="1"
-                        placeholder="Personas"
+                        inputmode="numeric"
+                        placeholder="Pers."
                         class="border border-line px-3 py-2 rounded-sm font-mono text-sm focus:outline-none focus:border-accent"
                     />
                     <button
                         @click="eliminarGrupo(idx)"
-                        class="text-danger hover:text-red-700 text-lg px-1"
+                        class="text-danger hover:text-red-700 text-xl px-1"
                         aria-label="Eliminar"
                     >×</button>
                 </div>
@@ -207,7 +207,7 @@ const totalAlergicos = () => gruposAlergenos.value.reduce((acc, g) => acc + Numb
                 @click="guardar"
                 :disabled="guardando || totalAlergicos() > totalComensales"
             >
-                {{ guardando ? 'Guardando...' : 'Aplicar cambios' }}
+                {{ guardando ? 'Guardando...' : 'Aplicar' }}
             </button>
         </template>
     </Modal>
